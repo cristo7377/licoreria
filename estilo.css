@@ -1,0 +1,135 @@
+body{
+}
+/*PAGINA PRINCIPAL*/
+#principal{
+width:1890px;
+border:3px solid #000000;
+margin:0 auto;
+}
+#cabecera{
+	height:400px;
+	border:1px solid #000000;
+	margin:5px;
+}
+#menu{
+	height:125px;
+	border:1px solid #000000;
+	margin:5px;
+}
+#menu li{
+	margin-left:200px;
+	display:inline;
+}
+#colizq{
+	width:600px;
+	border:1px solid #000000;
+	margin:5px;
+	float:left;
+}
+#colder{
+	width:1266px;
+	border:1px solid #000000;
+	margin:5px;
+	float:left;
+}
+.clear{
+	clear:both;
+}
+#pie{
+	height:225px;
+	border:1px solid #000000;
+	margin:5px;
+}
+#nombre{
+	height:350px;
+	border:1px solid #000000;
+	margin:5px;
+}
+#FONDO{
+width:1890px;
+border:3px solid #000000;
+margin:0 auto;
+}
+/*PAGINA SOMOS*/
+#SOMOS{
+	height:150px;
+	width:1878px;
+	border:1px solid #000000;
+	margin:5px;
+	float:left;
+}
+/*PAGINA productos*/
+#productos{
+	height:150px;
+	width:1878px;
+	border:1px solid #000000;
+	margin:5px;
+	float:left;
+}
+#col1{
+	width:366px;
+	border:1px solid #000000;
+	margin:5px;
+	float:left;
+}
+#col2{
+	width:366px;
+	border:1px solid #000000;
+	margin:5px;
+	float:left;
+}
+#col3{
+	width:366px;
+	border:1px solid #000000;
+	margin:5px;
+	float:left;
+}
+#col4{
+	width:366px;
+	border:1px solid #000000;
+	margin:5px;
+	float:left;
+}
+#col5{
+	width:366px;
+	border:1px solid #000000;
+	margin:5px;
+	float:left;
+}
+#col6{
+	width:366px;
+	border:1px solid #000000;
+	margin:5px;
+	float:left;
+}
+#col7{
+	width:366px;
+	border:1px solid #000000;
+	margin:5px;
+	float:left;
+}
+#col8{
+	width:366px;
+	border:1px solid #000000;
+	margin:5px;
+	float:left;
+}
+#col9{
+	width:366px;
+	border:1px solid #000000;
+	margin:5px;
+	float:left;
+}
+#col10{
+	width:366px;
+	border:1px solid #000000;
+	margin:5px;
+	float:left;
+}
+/*PAGINA productos*/
+#MISION{
+	width:1878px;
+	border:1px solid #000000;
+	margin:5px;
+	float:left;
+}

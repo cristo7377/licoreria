@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Licores</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #fef9f0; color: #2e241f; }
+        #principal { max-width: 1400px; margin: 0 auto; background: white; }
+        #cabecera img { width: 100%; height: auto; max-height: 350px; object-fit: cover; }
+        #menu { background: #5a2e1a; padding: 0.8rem; border-bottom: 4px solid #d9a87c; }
+        #menu ul { display: flex; justify-content: center; flex-wrap: wrap; list-style: none; gap: 1rem; }
+        #menu a { color: #ffefdb; text-decoration: none; font-weight: bold; padding: 0.5rem 1.2rem; border-radius: 40px; transition: 0.2s; }
+        #menu a:hover { background: #d9a87c; color: #2e241f; }
+        .contenido { padding: 2rem; display: flex; justify-content: center; align-items: center; min-height: 60vh; }
+        .tarjeta-contacto { background: #faeedf; border-radius: 48px; padding: 2.5rem; max-width: 800px; width: 100%; text-align: center; box-shadow: 0 12px 25px rgba(0,0,0,0.1); }
+        .tarjeta-contacto h2 { font-size: 2.2rem; color: #7b3f1f; margin-bottom: 1.5rem; }
+        .info { font-size: 1.2rem; line-height: 2; text-align: left; background: white; padding: 1.5rem; border-radius: 30px; margin-top: 1rem; }
+        .info p { margin: 0.6rem 0; }
+        .info strong { color: #9b4b1f; }
+        #pie { background: #2e1b10; color: #f5e2cd; text-align: center; padding: 1.8rem; margin-top: 2rem; }
+        @media (max-width: 700px) { .tarjeta-contacto { padding: 1rem; } .info { font-size: 0.9rem; } }
+    </style>
+</head>
+<body>
+<div id="principal">
+    <div id="cabecera"><img src="img/aguila.png" alt="Licores"></div>
+    <div id="menu">
+        <ul>
+            <li><a href="inicio.html">INICIO</a></li>
+            <li><a href="somos.html">SOMOS</a></li>
+            <li><a href="productos.html">PRODUCTOS</a></li>
+            <li><a href="mision.html">MISION</a></li>
+            <li><a href="carrito.html">CARRITO</a></li>
+            <li><a href="contacto.html">CONTACTO</a></li>
+        </ul>
+    </div>
+    <div class="contenido">
+        <div class="tarjeta-contacto">
+            <h2>📞 CONTACTO</h2>
+            <div class="info">
+                <p><strong>📱 Teléfono:</strong> 461 540 3748</p>
+                <p><strong>✉️ Correo:</strong> davidresen805@gmail.com</p>
+                <p><strong>📷 Instagram:</strong> @cristoferguillen246</p>
+                <p><strong>📘 Facebook:</strong> Cristofer Guillen</p>
+                <p><strong>📍 Ubicación:</strong> Agua Zarca Segunda Sección, Landa de Matamoros, Querétaro. Calle principal salida hacia Pisaflores, Hidalgo.</p>
+            </div>
+        </div>
+    </div>
+    <div id="pie">"El placer de un buen trago, el inicio de una gran noche."</div>
+</div>
+</body>
+</html>

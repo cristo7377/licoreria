@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #fef9f0; }
+        #principal { max-width: 1200px; margin: 0 auto; background: white; min-height: 100vh; }
+        #cabecera img { width: 100%; height: auto; max-height: 350px; object-fit: cover; }
+        #menu { background: #5a2e1a; padding: 0.8rem; border-bottom: 4px solid #d9a87c; }
+        #menu ul { display: flex; justify-content: center; flex-wrap: wrap; list-style: none; gap: 1rem; }
+        #menu a { color: #ffefdb; text-decoration: none; font-weight: bold; padding: 0.5rem 1.2rem; border-radius: 40px; transition: 0.2s; }
+        #menu a:hover { background: #d9a87c; color: #2e241f; }
+        .contenido { padding: 2rem; }
+        .titulo { text-align: center; font-size: 2.5rem; font-weight: bold; color: #7b3f1f; margin-bottom: 2rem; border-bottom: 3px solid #e7c8a8; display: inline-block; width: auto; }
+        table { width: 100%; border-collapse: collapse; background: white; border-radius: 24px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        th, td { padding: 1rem; text-align: center; border-bottom: 1px solid #f0e0cf; }
+        th { background: #f1e4d8; color: #5a2e1a; }
+        .cantidad-control { display: inline-flex; gap: 0.6rem; background: #f9f2ea; padding: 0.2rem 1rem; border-radius: 40px; align-items: center; }
+        .cantidad-control button { background: #d9a87c; border: none; width: 28px; height: 28px; border-radius: 50%; font-weight: bold; cursor: pointer; color: white; font-size: 1.1rem; }
+        .eliminar { background: #b34e3a; border: none; color: white; padding: 0.3rem 1rem; border-radius: 30px; cursor: pointer; }
+        .resumen { margin-top: 2rem; background: #faeedf; padding: 1.5rem; border-radius: 28px; text-align: right; font-size: 1.3rem; font-weight: bold; }
+        .btn-vaciar { background: #6b2e1a; color: white; border: none; padding: 0.6rem 1.5rem; border-radius: 40px; cursor: pointer; margin-right: 1rem; }
+        .seguir { background: #d9a87c; color: #2e241f; text-decoration: none; padding: 0.6rem 1.5rem; border-radius: 40px; display: inline-block; font-weight: bold; }
+        .vacio { text-align: center; background: #fff1e6; padding: 2rem; border-radius: 28px; font-size: 1.3rem; }
+        #pie { background: #2e1b10; color: #f5e2cd; text-align: center; padding: 1.8rem; margin-top: 2rem; }
+        @media (max-width: 700px) { th, td { padding: 0.5rem; font-size: 0.8rem; } .contenido { padding: 1rem; } }
+    </style>
+</head>
+<body>
+<div id="principal">
+    <div id="cabecera"><img src="img/aguila.png" alt="Licores"></div>
+    <div id="menu">
+        <ul>
+            <li><a href="inicio.html">INICIO</a></li>
+            <li><a href="somos.html">SOMOS</a></li>
+            <li><a href="productos.html">PRODUCTOS</a></li>
+            <li><a href="mision.html">MISION</a></li>
+            <li><a href="carrito.html">CARRITO</a></li>
+            <li><a href="contacto.html">CONTACTO</a></li>
+        </ul>
+    </div>
+    <div class="contenido">
+        <center><div class="titulo">🛒 MI CARRITO</div></center>
+        <div id="carrito-zona"></div>
+    </div>
+    <div id="pie">"El placer de un buen trago, el inicio de una gran noche."</div>
+</div>
+<script>
+    function mostrarCarrito() {
+        let carrito = localStorage.getItem("carritoLicores");
+        carrito = carrito ? JSON.parse(carrito) : [];
+        let zona = document.getElementById("carrito-zona");
+        if (carrito.length === 0) {
+            zona.innerHTML = `<div class="vacio">🛍️ No hay productos en el carrito. <a href="productos.html" class="seguir" style="display:inline-block; margin-top:1rem;">Ir a productos</a></div>`;
+            return;
+        }
+        let html = `<table><thead><tr><th>Producto</th><th>Precio</th><th>Cantidad</th><th>Subtotal</th><th></th></tr></thead><tbody>`;
+        let total = 0;
+        carrito.forEach((item, idx) => {
+            let subtotal = item.precio * item.cantidad;
+            total += subtotal;
+            html += `<tr>
+                        <td>${item.nombre}</td>
+                        <td>$${item.precio}</td>
+                        <td><div class="cantidad-control"><button data-index="${idx}" data-delta="-1">-</button><span>${item.cantidad}</span><button data-index="${idx}" data-delta="1">+</button></div></td>
+                        <td>$${subtotal}</td>
+                        <td><button class="eliminar" data-index="${idx}">🗑 Eliminar</button></td>
+                     </tr>`;
+        });
+        html += `</tbody></table>
+                 <div class="resumen">
+                    <strong>TOTAL: $${total}</strong><br><br>
+                    <button id="vaciarBtn" class="btn-vaciar">Vaciar carrito</button>
+                    <a href="productos.html" class="seguir">➕ Seguir comprando</a>
+                 </div>`;
+        zona.innerHTML = html;
+        // eventos de cantidad
+        document.querySelectorAll(".cantidad-control button").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                let index = parseInt(btn.getAttribute("data-index"));
+                let delta = parseInt(btn.getAttribute("data-delta"));
+                let carritoAct = JSON.parse(localStorage.getItem("carritoLicores"));
+                if (carritoAct && carritoAct[index]) {
+                    carritoAct[index].cantidad += delta;
+                    if (carritoAct[index].cantidad <= 0) carritoAct.splice(index, 1);
+                    localStorage.setItem("carritoLicores", JSON.stringify(carritoAct));
+                    mostrarCarrito();
+                }
+            });
+        });
+        document.querySelectorAll(".eliminar").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                let index = parseInt(btn.getAttribute("data-index"));
+                let carritoAct = JSON.parse(localStorage.getItem("carritoLicores"));
+                carritoAct.splice(index, 1);
+                localStorage.setItem("carritoLicores", JSON.stringify(carritoAct));
+                mostrarCarrito();
+            });
+        });
+        document.getElementById("vaciarBtn")?.addEventListener("click", () => {
+            localStorage.removeItem("carritoLicores");
+            mostrarCarrito();
+        });
+    }
+    mostrarCarrito();
+</script>
+</body>
+</html>

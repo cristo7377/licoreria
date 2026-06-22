@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes Somos | Licores</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #fef9f0; color: #2e241f; }
+        #principal { max-width: 1400px; margin: 0 auto; background: white; }
+        #cabecera img { width: 100%; height: auto; max-height: 350px; object-fit: cover; }
+        #menu { background: #5a2e1a; padding: 0.8rem; border-bottom: 4px solid #d9a87c; }
+        #menu ul { display: flex; justify-content: center; flex-wrap: wrap; list-style: none; gap: 1rem; }
+        #menu a { color: #ffefdb; text-decoration: none; font-weight: bold; padding: 0.5rem 1.2rem; border-radius: 40px; transition: 0.2s; }
+        #menu a:hover { background: #d9a87c; color: #2e241f; }
+        .contenido { padding: 2rem; text-align: center; }
+        .titulo { font-size: 2.5rem; font-weight: bold; color: #7b3f1f; border-bottom: 3px solid #e7c8a8; display: inline-block; margin-bottom: 2rem; }
+        .texto-somos { background: #fffaf5; padding: 2rem; border-radius: 40px; max-width: 900px; margin: 0 auto; font-size: 1.3rem; line-height: 1.5; color: #3c2a1f; }
+        #pie { background: #2e1b10; color: #f5e2cd; text-align: center; padding: 1.8rem; margin-top: 2rem; }
+        @media (max-width: 700px) { .contenido { padding: 1rem; } .texto-somos { font-size: 1rem; } }
+    </style>
+</head>
+<body>
+<div id="principal">
+    <div id="cabecera"><img src="img/aguila.png" alt="Licores"></div>
+    <div id="menu">
+        <ul>
+            <li><a href="inicio.html">INICIO</a></li>
+            <li><a href="somos.html">SOMOS</a></li>
+            <li><a href="productos.html">PRODUCTOS</a></li>
+            <li><a href="mision.html">MISION</a></li>
+            <li><a href="carrito.html">CARRITO</a></li>
+            <li><a href="contacto.html">CONTACTO</a></li>
+        </ul>
+    </div>
+    <div class="contenido">
+        <div class="titulo">🍾 ¿QUÉ SOMOS?</div>
+        <div class="texto-somos">
+            <strong>Aguilar</strong> es una empresa comercializadora y distribuidora de licores que se dedica a la compra, importación y venta de una amplia variedad de bebidas alcohólicas nacionales e internacionales. No fabrica sus propios licores, sino que selecciona y ofrece productos de distintas marcas y orígenes para satisfacer todos los gustos y ocasiones.
+        </div>
+    </div>
+    <div id="pie">"El placer de un buen trago, el inicio de una gran noche."</div>
+</div>
+</body>
+</html>

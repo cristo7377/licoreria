@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos | Licorería</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #fef9f0; }
+        #principal { max-width: 1400px; margin: 0 auto; background: white; }
+        #cabecera img { width: 100%; height: auto; max-height: 350px; object-fit: cover; }
+        #menu { background: #5a2e1a; padding: 0.8rem; border-bottom: 4px solid #d9a87c; }
+        #menu ul { display: flex; justify-content: center; flex-wrap: wrap; list-style: none; gap: 1rem; }
+        #menu a { color: #ffefdb; text-decoration: none; font-weight: bold; padding: 0.5rem 1.2rem; border-radius: 40px; transition: 0.2s; }
+        #menu a:hover { background: #d9a87c; color: #2e241f; }
+        .titulo-pag { text-align: center; font-size: 2.5rem; font-weight: bold; color: #7b3f1f; margin: 2rem 0; border-bottom: 3px solid #e7c8a8; display: inline-block; width: auto; }
+        .productos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 2rem;
+            padding: 1rem 2rem;
+        }
+        .producto {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+            padding-bottom: 1rem;
+        }
+        .producto:hover { transform: translateY(-5px); box-shadow: 0 15px 28px rgba(0,0,0,0.12); }
+        .producto img { width: 100%; height: 220px; object-fit: cover; background: #f3ede7; }
+        .producto p { font-size: 1.4rem; font-weight: bold; margin: 0.8rem 0 0.2rem; color: #3b281c; }
+        .precio { font-size: 1.2rem; font-weight: bold; color: #b45f2b; background: #fff0e2; display: inline-block; padding: 0.2rem 1.2rem; border-radius: 40px; }
+        #pie { background: #2e1b10; color: #f5e2cd; text-align: center; padding: 1.8rem; margin-top: 2rem; }
+        .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #2c5a2e; color: white; padding: 10px 20px; border-radius: 50px; font-weight: bold; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        @media (max-width: 700px) { .productos-grid { padding: 0.8rem; gap: 1rem; } }
+    </style>
+</head>
+<body>
+<div id="principal">
+    <div id="cabecera"><img src="img/aguila.png" alt="Licores"></div>
+    <div id="menu">
+        <ul>
+            <li><a href="inicio.html">INICIO</a></li>
+            <li><a href="somos.html">SOMOS</a></li>
+            <li><a href="productos.html">PRODUCTOS</a></li>
+            <li><a href="mision.html">MISION</a></li>
+            <li><a href="carrito.html">CARRITO</a></li>
+            <li><a href="contacto.html">CONTACTO</a></li>
+        </ul>
+    </div>
+    <center><div class="titulo-pag">🍾 PRODUCTOS 🍾</div></center>
+    <div class="productos-grid">
+        <div class="producto" data-nombre="BRANDY" data-precio="250"><img src="img/brandy.jpg" alt="Brandy"><p>BRANDY</p><div class="precio">$250</div></div>
+        <div class="producto" data-nombre="CERVEZA CLARA" data-precio="500"><img src="img/cerveza clara.jpg" alt="Cerveza"><p>CERVEZA CLARA</p><div class="precio">$500</div></div>
+        <div class="producto" data-nombre="AGUA ARDIENTE" data-precio="824"><img src="img/agua ardiente.jpg" alt="Agua ardiente"><p>AGUA ARDIENTE</p><div class="precio">$824</div></div>
+        <div class="producto" data-nombre="GINEBRA" data-precio="600"><img src="img/ginebra.jpg" alt="Ginebra"><p>GINEBRA</p><div class="precio">$600</div></div>
+        <div class="producto" data-nombre="MEZCAL" data-precio="1800"><img src="img/Mezcal.jpg" alt="Mezcal"><p>MEZCAL</p><div class="precio">$1800</div></div>
+        <div class="producto" data-nombre="RON" data-precio="1100"><img src="img/ron.jpg" alt="Ron"><p>RON</p><div class="precio">$1100</div></div>
+        <div class="producto" data-nombre="SAKE" data-precio="400"><img src="img/sake.jpg" alt="Sake"><p>SAKE</p><div class="precio">$400</div></div>
+        <div class="producto" data-nombre="TEQUILA" data-precio="700"><img src="img/tequila.jpg" alt="Tequila"><p>TEQUILA</p><div class="precio">$700</div></div>
+        <div class="producto" data-nombre="VINO" data-precio="1500"><img src="img/vino.jpg" alt="Vino"><p>VINO</p><div class="precio">$1500</div></div>
+        <div class="producto" data-nombre="VODKA" data-precio="600"><img src="img/vodka.jpg" alt="Vodka"><p>VODKA</p><div class="precio">$600</div></div>
+    </div>
+    <div id="pie">"El placer de un buen trago, el inicio de una gran noche."</div>
+</div>
+<script>
+    function agregarAlCarrito(nombre, precio) {
+        let carrito = localStorage.getItem("carritoLicores");
+        carrito = carrito ? JSON.parse(carrito) : [];
+        let existe = carrito.find(p => p.nombre === nombre);
+        if (existe) existe.cantidad++;
+        else carrito.push({ nombre, precio, cantidad: 1 });
+        localStorage.setItem("carritoLicores", JSON.stringify(carrito));
+        let toast = document.createElement("div");
+        toast.className = "toast";
+        toast.innerText = `🍷 ${nombre} agregado al carrito`;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 1500);
+    }
+    document.querySelectorAll(".producto").forEach(prod => {
+        prod.addEventListener("click", () => {
+            let nombre = prod.getAttribute("data-nombre");
+            let precio = parseFloat(prod.getAttribute("data-precio"));
+            agregarAlCarrito(nombre, precio);
+        });
+        prod.style.cursor = "pointer";
+    });
+</script>
+</body>
+</html>
